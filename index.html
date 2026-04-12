@@ -205,49 +205,49 @@
         .cgpa-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(0,201,167,0.08); border:1px solid rgba(0,201,167,0.15); color:var(--primary); padding:0.3rem 0.8rem; border-radius:9999px; font-size:0.82rem; font-weight:600; margin-top:0.5rem; }
 
         /* ═══ COURSEWORK SECTION ═══ */
-        .coursework-grid {
+        .cw-wrap {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
-        .cw-card {
+        .cw-row {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 1rem;
-            padding: 1.5rem;
+            border-radius: 0.85rem;
+            padding: 1.25rem 1.5rem;
             backdrop-filter: blur(10px);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-            position: relative; overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
         }
-        .cw-card::after {
-            content: ''; position: absolute; bottom: 0; left: 0;
-            width: 0; height: 2px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            transition: width 0.4s ease;
+        .cw-row:hover {
+            border-color: rgba(0,201,167,0.28);
+            transform: translateY(-3px);
         }
-        .cw-card:hover { border-color: rgba(0,201,167,0.28); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
-        .cw-card:hover::after { width: 100%; }
-        .cw-card-head {
-            display: flex; align-items: center; gap: 0.85rem;
-            margin-bottom: 1rem; padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(0,201,167,0.08);
-        }
-        .cw-icon {
+        .cw-row-icon {
             width: 2.2rem; height: 2.2rem; flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
             background: rgba(0,201,167,0.1); color: var(--primary);
-            border-radius: 0.55rem; font-size: 0.9rem;
-            transition: background 0.3s, color 0.3s, transform 0.4s;
+            border-radius: 0.5rem; font-size: 0.9rem;
+            transition: background 0.3s, color 0.3s;
+            margin-top: 0.1rem;
         }
-        .cw-card:hover .cw-icon { background: var(--primary); color: #000; transform: rotate(15deg); }
-        .cw-category { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--light); }
-        .cw-degree { font-size: 0.72rem; color: var(--primary); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.1rem; }
-        .cw-list { list-style: none; }
-        .cw-list li { font-size: 0.84rem; color: var(--gray); padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s, transform 0.2s; }
-        .cw-list li:last-child { border-bottom: none; }
-        .cw-list li::before { content: '◦'; color: var(--primary); font-size: 0.7rem; flex-shrink: 0; }
-        .cw-list li:hover { color: var(--light); transform: translateX(3px); }
-
+        .cw-row:hover .cw-row-icon { background: var(--primary); color: #000; }
+        .cw-row-label {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 0.92rem;
+            color: var(--light); margin-bottom: 0.4rem;
+        }
+        .cw-row-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .cw-row-tag {
+            background: rgba(0,201,167,0.06);
+            border: 1px solid rgba(0,201,167,0.11);
+            color: var(--gray); padding: 0.18rem 0.65rem;
+            border-radius: 9999px; font-size: 0.78rem;
+        }
+        @media (max-width: 768px) { .cw-wrap { grid-template-columns: 1fr; } }
+        
         /* ═══ CERTIFICATIONS TABS ═══ */
         .cert-tabs {
             display: flex; justify-content: center; gap: 0; margin-bottom: 3rem;
@@ -648,114 +648,61 @@
         <span class="section-label reveal">Academic Training</span>
         <h2 class="section-title reveal reveal-delay-1">Relevant Coursework</h2>
         <div class="section-divider reveal reveal-delay-2"></div>
-        <div class="coursework-grid">
+        <div class="cw-wrap">
 
-            <div class="cw-card reveal reveal-delay-1">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-brain"></i></div>
-                    <div>
-                        <div class="cw-category">Machine Learning & AI</div>
-                        <div class="cw-degree">M.Sc. — IMA Bhubaneswar</div>
+            <div class="cw-row reveal reveal-delay-1">
+                <div class="cw-row-icon"><i class="fas fa-brain"></i></div>
+                <div>
+                    <div class="cw-row-label">Machine Learning & AI</div>
+                    <div class="cw-row-tags">
+                        <span class="cw-row-tag">Machine Learning</span>
+                        <span class="cw-row-tag">Deep Learning</span>
+                        <span class="cw-row-tag">NLP</span>
+                        <span class="cw-row-tag">Generative AI</span>
+                        <span class="cw-row-tag">Computer Vision</span>
                     </div>
                 </div>
-                <ul class="cw-list">
-                    <li>Machine Learning</li>
-                    <li>Deep Learning</li>
-                    <li>Natural Language Processing</li>
-                    <li>Generative AI & LLMs</li>
-                    <li>Computer Vision</li>
-                    <li>Reinforcement Learning</li>
-                </ul>
             </div>
 
-            <div class="cw-card reveal reveal-delay-2">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-chart-pie"></i></div>
-                    <div>
-                        <div class="cw-category">Data Science & Analytics</div>
-                        <div class="cw-degree">M.Sc. — IMA Bhubaneswar</div>
+            <div class="cw-row reveal reveal-delay-2">
+                <div class="cw-row-icon"><i class="fas fa-chart-pie"></i></div>
+                <div>
+                    <div class="cw-row-label">Data Science & Analytics</div>
+                    <div class="cw-row-tags">
+                        <span class="cw-row-tag">Statistical Learning</span>
+                        <span class="cw-row-tag">Data Mining</span>
+                        <span class="cw-row-tag">Time Series Analysis</span>
+                        <span class="cw-row-tag">Big Data Analytics</span>
                     </div>
                 </div>
-                <ul class="cw-list">
-                    <li>Statistical Learning & Inference</li>
-                    <li>Data Mining & Warehousing</li>
-                    <li>Big Data Analytics</li>
-                    <li>Time Series Analysis & Forecasting</li>
-                    <li>Exploratory Data Analysis</li>
-                    <li>Database Management Systems</li>
-                </ul>
             </div>
 
-            <div class="cw-card reveal reveal-delay-3">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-square-root-alt"></i></div>
-                    <div>
-                        <div class="cw-category">Mathematics & Foundations</div>
-                        <div class="cw-degree">M.Sc. / B.Sc. — IMA & RKMVCC</div>
+            <div class="cw-row reveal reveal-delay-3">
+                <div class="cw-row-icon"><i class="fas fa-square-root-alt"></i></div>
+                <div>
+                    <div class="cw-row-label">Mathematics & Foundations</div>
+                    <div class="cw-row-tags">
+                        <span class="cw-row-tag">Linear Algebra</span>
+                        <span class="cw-row-tag">Probability Theory</span>
+                        <span class="cw-row-tag">Optimization</span>
+                        <span class="cw-row-tag">Numerical Methods</span>
+                        <span class="cw-row-tag">Operations Research</span>
                     </div>
                 </div>
-                <ul class="cw-list">
-                    <li>Linear Algebra & Matrix Theory</li>
-                    <li>Probability Theory & Stochastic Processes</li>
-                    <li>Numerical Methods & Optimization</li>
-                    <li>Real & Complex Analysis</li>
-                    <li>Operations Research</li>
-                    <li>Graph Theory & Combinatorics</li>
-                </ul>
             </div>
 
-            <div class="cw-card reveal reveal-delay-4">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-code"></i></div>
-                    <div>
-                        <div class="cw-category">Programming & Software</div>
-                        <div class="cw-degree">M.Sc. — IMA Bhubaneswar</div>
+            <div class="cw-row reveal reveal-delay-4">
+                <div class="cw-row-icon"><i class="fas fa-code"></i></div>
+                <div>
+                    <div class="cw-row-label">Programming & Engineering</div>
+                    <div class="cw-row-tags">
+                        <span class="cw-row-tag">Python</span>
+                        <span class="cw-row-tag">R Programming</span>
+                        <span class="cw-row-tag">Algorithms & DSA</span>
+                        <span class="cw-row-tag">DBMS</span>
+                        <span class="cw-row-tag">Software Engineering</span>
                     </div>
                 </div>
-                <ul class="cw-list">
-                    <li>Python for Data Science</li>
-                    <li>R Programming</li>
-                    <li>Algorithms & Data Structures</li>
-                    <li>Object-Oriented Programming</li>
-                    <li>Cloud Computing Basics</li>
-                    <li>Software Engineering Principles</li>
-                </ul>
-            </div>
-
-            <div class="cw-card reveal reveal-delay-5">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-network-wired"></i></div>
-                    <div>
-                        <div class="cw-category">Advanced AI Topics</div>
-                        <div class="cw-degree">M.Sc. — IMA Bhubaneswar</div>
-                    </div>
-                </div>
-                <ul class="cw-list">
-                    <li>Knowledge Graphs & Ontologies</li>
-                    <li>Information Retrieval & RAG</li>
-                    <li>Speech & Signal Processing</li>
-                    <li>Multimodal AI Systems</li>
-                    <li>AI Ethics & Responsible AI</li>
-                    <li>Geospatial Data Analysis</li>
-                </ul>
-            </div>
-
-            <div class="cw-card reveal reveal-delay-6">
-                <div class="cw-card-head">
-                    <div class="cw-icon"><i class="fas fa-project-diagram"></i></div>
-                    <div>
-                        <div class="cw-category">Research & Applied Work</div>
-                        <div class="cw-degree">M.Sc. — IMA Bhubaneswar</div>
-                    </div>
-                </div>
-                <ul class="cw-list">
-                    <li>Research Methodology</li>
-                    <li>Dissertation / Project Work</li>
-                    <li>Technical Writing & Presentation</li>
-                    <li>Seminar on Emerging AI Trends</li>
-                    <li>Industry Internship (DataMatrixAI)</li>
-                    <li>Collaborative Problem Solving</li>
-                </ul>
             </div>
 
         </div>
